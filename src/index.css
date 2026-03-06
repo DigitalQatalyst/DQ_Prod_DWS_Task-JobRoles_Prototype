@@ -1,96 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --font-sans: 'Inter', sans-serif;
+
+    --background: 228 14% 96%;
+    --foreground: 222 84% 5%;
+    --surface: 0 0% 100%;
+    --surface-foreground: 222 84% 5%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 84% 5%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 84% 5%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
 
     --radius: 0.5rem;
 
+    /* Brand colors */
+    --brand-blue: 217 91% 60%;
+    --brand-green: 142 76% 36%;
+    --brand-yellow: 45 93% 47%;
+    --brand-red: 0 84% 60%;
+    --brand-purple: 263 70% 58%;
+    --brand-teal: 189 94% 43%;
+
+    /* Hero */
+    --hero-from: 222 47% 15%;
+    --hero-via: 237 44% 20%;
+    --hero-to: 213 39% 20%;
+
+    /* Navy */
+    --navy: 237 44% 20%;
+    --navy-foreground: 0 0% 100%;
+
+    /* Footer */
+    --footer: 222 47% 8%;
+    --footer-foreground: 210 40% 98%;
+
+    /* Topbar gradient handled via CSS */
+    --topbar-height: 56px;
+
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 217 91% 60%;
   }
 }
 
@@ -98,8 +79,95 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+}
+
+/* Topbar gradient */
+.topbar-gradient {
+  background: linear-gradient(90deg, #c2410c, #9f1239, #1e1b4b);
+}
+
+/* Hero gradient */
+.hero-gradient {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #1a2e4a 100%);
+}
+
+/* Hero glow */
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* GHC card cover gradients */
+.ghc-cover-task-naming { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
+.ghc-cover-context { background: linear-gradient(135deg, #14532d, #16a34a); }
+.ghc-cover-purpose { background: linear-gradient(135deg, #7f1d1d, #dc2626); }
+.ghc-cover-approach { background: linear-gradient(135deg, #1e3a8a, #0891b2); }
+.ghc-cover-outcome { background: linear-gradient(135deg, #164e63, #0891b2); }
+.ghc-cover-links { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
+.ghc-cover-checklist { background: linear-gradient(135deg, #713f12, #ca8a04); }
+.ghc-cover-coe { background: linear-gradient(135deg, #1e1b4b, #9f1239); }
+.ghc-cover-ceo { background: linear-gradient(135deg, #1e1b4b, #4f46e5); }
+.ghc-cover-dco { background: linear-gradient(135deg, #065f46, #16a34a); }
+.ghc-cover-dbp-platform { background: linear-gradient(135deg, #0c4a6e, #0891b2); }
+.ghc-cover-dbp-delivery { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
+.ghc-cover-evmo { background: linear-gradient(135deg, #1e3a8a, #2563eb); }
+.ghc-cover-simo { background: linear-gradient(135deg, #164e63, #0891b2); }
+.ghc-cover-dpmo { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
+.ghc-cover-pcmo { background: linear-gradient(135deg, #14532d, #16a34a); }
+
+/* Formula box */
+.formula-box {
+  background: #f0f7ff;
+  border: 1px solid #bfdbfe;
+  font-family: 'Courier New', monospace;
+}
+
+/* Tooltip */
+.dq-tooltip {
+  background: #1e1b4b;
+  color: white;
+  max-width: 230px;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Tab styles */
+.dq-tab {
+  @apply px-4 py-3 text-sm font-medium cursor-pointer transition-colors;
+  color: hsl(var(--muted-foreground));
+  border-bottom: 2px solid transparent;
+}
+.dq-tab:hover {
+  color: hsl(var(--foreground));
+}
+.dq-tab.active {
+  color: hsl(var(--foreground));
+  border-bottom-color: #2563eb;
+}
+
+/* Glass pill */
+.glass-pill {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+}
+
+/* Dimmed card */
+.dimmed-card {
+  opacity: 0.42;
+  pointer-events: none;
 }
