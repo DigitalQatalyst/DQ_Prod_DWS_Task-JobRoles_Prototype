@@ -25,7 +25,7 @@ export const standards: Standard[] = [
       { label: 'Universally Applied', description: 'Every task across DQ follows the same naming convention — no exceptions, no shortcuts.' },
       { label: 'Progress Embedded', description: 'WiP (Work In Progress) is baked into the name, giving instant visibility of task maturity.' },
       { label: 'AI-Driven', description: 'AI is present at every stage — research, debate, pinpoint, validate, deliver — and the name reflects it.' },
-      { label: 'Platform Agnostic', description: 'The naming formula works across GHC, DWS, Planner, Viva Engage and all DQ platforms.' },
+      { label: 'Platform', description: 'The naming formula works across GHC, DWS, Planner, Viva Engage and all DQ platforms.' },
     ],
     practiceContent: { type: 'task-naming' },
     governanceRules: [
