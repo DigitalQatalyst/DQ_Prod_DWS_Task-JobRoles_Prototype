@@ -1,12 +1,46 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import Topbar from '../components/Topbar';
+import Footer from '../components/Footer';
+import HomeView from '../views/HomeView';
+import StandardDetailView from '../views/StandardDetailView';
+import CoEView from '../views/CoEView';
+import EVMODetailView from '../views/EVMODetailView';
 
 const Index = () => {
+  const [view, setView] = useState('home');
+  const [detailId, setDetailId] = useState('');
+
+  const navigate = (newView: string, id?: string) => {
+    setView(newView);
+    if (id) setDetailId(id);
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Topbar onNavigate={navigate} />
+
+      {view === 'home' && (
+        <>
+          <HomeView onNavigate={navigate} />
+          <Footer />
+        </>
+      )}
+
+      {view === 'standard' && (
+        <StandardDetailView standardId={detailId} onNavigate={navigate} />
+      )}
+
+      {view === 'coe' && (
+        <>
+          <CoEView onNavigate={navigate} />
+          <Footer />
+        </>
+      )}
+
+      {view === 'evmo' && (
+        <EVMODetailView onNavigate={navigate} />
+      )}
     </div>
   );
 };
